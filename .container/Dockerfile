@@ -13,6 +13,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Set working directory
 WORKDIR /app
 
+RUN apk add --no-cache git
+
+RUN git clone https://github.com/camel-ai/owl.git .
+
 # Install system dependencies (combine into one RUN command to reduce layers)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl git ffmpeg libsm6 libxext6 xvfb xauth x11-utils \
